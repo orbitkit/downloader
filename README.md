@@ -12,3 +12,6 @@ Usage: `python downloader.py /path/to/mydesigns.csv /destination/path`
 The script will download all designs listed in the CSV into the specified directory.
 The directory must exist. If the script aborts, it can be restarted, and
 it will pick up where it left off.
+
+Caveat: It downloads your files with their original filenames. If multiple designs
+have the same original filename, the second (and subsequent) designs will be ignored.
