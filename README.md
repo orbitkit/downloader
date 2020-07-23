@@ -3,7 +3,7 @@
 This is a simple python script that will download your OrbitKit design library. You will
 need a recent version of Python and a CSV file that you have exported from OrbitKit.
 
-1. Download downloader.py from https://github.com/orbitkit/downloader
+1. Download `downloader.py` from https://github.com/orbitkit/downloader
 2. Export your design metadata CSV from OrbitKit
 3. Run the downloader:
 
