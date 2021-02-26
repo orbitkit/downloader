@@ -16,7 +16,7 @@ if len(sys.argv) != 3:
 csv_path = sys.argv[1]
 dest_path = sys.argv[2]
 
-with open(csv_path, newline='') as csv_file:
+with open(csv_path, newline='', encoding='utf-8') as csv_file:
     row_count = sum(1 for row in csv.reader(csv_file)) - 1  # skip the header row
     print(f'{row_count} designs')
 
