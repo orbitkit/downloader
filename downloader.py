@@ -38,15 +38,6 @@ secret = args.secret
 if merch and not secret:
     raise Exception('When specifying --merch, you must also specify --secret')
 
-
-# For some crazy reason cloudflare blocks the python user agent
-class AppURLopener(urllib.request.FancyURLopener):
-    version = "OrbitKit Downloader"
-
-
-opener = AppURLopener()
-
-
 with open(csv_path, newline='', encoding='utf-8') as csv_file:
     row_count = sum(1 for row in csv.reader(csv_file)) - 1  # skip the header row
     print(f'{row_count} designs')
@@ -73,5 +64,10 @@ with open(csv_path, newline='', encoding='utf-8') as csv_file:
 
             url = f'https://app.orbitkit.com/api/designs/{key}/render?X-Secret={secret}' if merch else art
 
-            opener.retrieve(url, download_path)
+            req = urllib.request.Request(url, data=None, headers={'User-Agent': "OrbitKit Downloader"})
+            opened = urllib.request.urlopen(req)
+
+            with open(download_path, 'wb') as f:
+                f.write(opened.read())
+
             os.rename(download_path, path)
